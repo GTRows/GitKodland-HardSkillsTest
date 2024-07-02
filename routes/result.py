@@ -11,26 +11,25 @@ def result():
     score = 0
     user_answers = request.form
 
-    questions = []
-    for row in db.get_questions():
-        questions.append(Question.from_db(row))
-        print(f"Questions results: {questions}")
-
-    student_id = user_answers.get('studentid')
-    if student_id and not re.match("^[0-9]{8}$", student_id):  # Düzenli ifade kullanarak doğrula
-        flash("Please enter a valid student ID.", 'error')
-        return redirect(url_for('main.index'))
+    questions = db.get_questions()
 
     for question in questions:
-            user_answer = user_answers.get(question.name)
-            if question.answer is not None:
-                if question.type == 'radio' and user_answer == question.answer:
-                    score += 1
-                elif question.type == 'text' and user_answer.lower() == question.answer.lower():
-                    score += 1
+        user_answer = user_answers.get(question['name'])
+        if question['answer'] is not None:
+            if question['type'] == 'radio' and user_answer == question['answer']:
+                score += 1
+            elif question['type'] == 'text' and user_answer.lower() == question['answer'].lower():
+                score += 1
 
-    session['score'] = score
-
-    db.log_result(user_id=1, score=score, answers=user_answers)
-
-    return render_template('result.html', score=score, best_score="123123")
+    user_id = session.get('user_id')
+    if user_id:
+        best_score = db.get_user_best_score(user_id)
+        if best_score is None:
+            best_score = 0
+        if score > best_score:
+            best_score = score
+        db.log_result(user_id=user_id, score=score, answers=user_answers)
+        return render_template('result.html', score=score, best_score=best_score)
+    else:
+        flash("Lütfen önce giriş yapın.", 'error')
+        return redirect(url_for('main.index'))

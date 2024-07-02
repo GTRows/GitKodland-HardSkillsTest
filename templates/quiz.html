@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Quiz</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="error-messages">
+                {% for message in messages %}
+                    <p>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+
+
+    <form method="post" action="/result">
+        {% for question in questions %}
+            <h2>{{ question.question }}</h2>
+            {% if question.type == 'text' %}
+                <input type="text" name="{{ question.name }}"
+                       {% if question.required %}required{% endif %}
+                       {% if question.pattern %}pattern="{{ question.pattern }}"{% endif %}>
+            {% elif question.type == 'radio' %}
+                {% for option in question.options %}
+                    <input type="radio" name="{{ question.name }}" value="{{ option }}"> {{ option }}<br>
+                {% endfor %}
+                <input type="hidden" name="{{ question.name }}" value="">
+            {% elif question.type == 'textarea' %}
+                <textarea name="{{ question.name }}" rows="4" cols="50"
+                          {% if question.required %}required{% endif %}
+                          {% if question.pattern %}pattern="{{ question.pattern }}"{% endif %}> </textarea>
+            {% endif %}
+        {% endfor %}
+        <br>
+        <input type="submit" value="Submit Answers">
+    </form>
+
+    {% if best_score is not none %}
+    <div style="position: absolute; top: 10px; right: 10px;">
+        <p>Best Score: {{ best_score }}</p>
+    </div>
+    {% endif %}
+
+    <footer>
+        Created by Fatih Aciroğlu
+    </footer>
+</body>
+</html>

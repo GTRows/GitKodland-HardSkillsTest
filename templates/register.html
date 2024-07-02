@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Quiz</title>
+    <title>Kayıt</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Quiz</h1>
+    <h1>Kayıt Ol</h1>
 
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -17,10 +17,17 @@
         {% endif %}
     {% endwith %}
 
-    <form method="post" action="/">
+    <form method="post" action="/register">
         <label for="studentid">Öğrenci ID:</label>
-        <input type="text" name="studentid" id="studentid" required>
-        <input type="submit" value="Giriş">
+        <input type="text" name="studentid" id="studentid" required value="{{ studentid }}">
+
+        <label for="name">Ad:</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="surname">Soyad:</label>
+        <input type="text" name="surname" id="surname" required>
+
+        <input type="submit" value="Kayıt Ol">
     </form>
 
     <footer>

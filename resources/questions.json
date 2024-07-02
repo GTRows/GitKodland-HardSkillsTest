@@ -1,31 +1,5 @@
 [
     {
-        "question": "What is your first Name?",
-        "type": "text",
-        "name": "firstname",
-        "answer": null,
-        "required": true
-    },
-    {
-        "question": "What is your last Name?",
-        "type": "text",
-        "name": "lastname",
-        "answer": null,
-        "required": true
-    },
-    {
-        "question": "What is your student ID?",
-        "type": "text",
-        "name": "studentid",
-        "answer": null,
-        "required": true,
-        "pattern": "^[0-9]{8}$",
-        "patternMessage": "Please enter a valid student ID.",
-        "patternMessage2": "Student ID must be 8 digits long.",
-        "patternMessage3": "Student ID must contain only numbers.",
-        "patternMessage4": "Student ID cannot contain any letters or special characters."
-    },
-    {
         "question": "What is your favorite color?",
         "type": "radio",
         "name": "color",
