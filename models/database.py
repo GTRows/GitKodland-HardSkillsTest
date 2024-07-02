@@ -111,10 +111,12 @@ class Database:
         )
         self.conn.commit()
 
+        result_id = self.cursor.lastrowid
+
         for question_name, answer in answers.items():
             self.cursor.execute(
                 "INSERT INTO answers (result_id, question_name, answer) VALUES (?, ?, ?)",
-                (self.cursor.lastrowid, question_name, answer)
+                (result_id, question_name, answer)
             )
         self.conn.commit()
 

@@ -9,7 +9,7 @@
     {
         "question": "What is your favorite color?",
         "type": "radio",
-        "name": "question1",
+        "name": "color",
         "options": [
             "red",
             "blue",
@@ -21,7 +21,7 @@
     {
         "question": "What is your favorite animal?",
         "type": "radio",
-        "name": "question2",
+        "name": "animal",
         "options": [
             "dog",
             "cat",
@@ -33,7 +33,7 @@
     {
         "question": "Describe your hobbies or interests:",
         "type": "textarea",
-        "name": "question3",
+        "name": "hobbies",
         "answer": null,
         "required": true
     }
