@@ -1,17 +1,20 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 from models.question import Question
-import json
+from models.database import Database
 
 result_bp = Blueprint('result', __name__)
+
+db = Database.get_instance()
 
 @result_bp.route('/result', methods=['POST'])
 def result():
     score = 0
     user_answers = request.form
 
-    with open('resources/questions.json', 'r') as f:
-        questions_data = json.load(f)
-    questions = [Question(**question) for question in questions_data]
+    questions = []
+    for row in db.get_questions():
+        questions.append(Question.from_db(row))
+        print(f"Questions results: {questions}")
 
     for question in questions:
         user_answer = user_answers.get(question.name)
@@ -26,5 +29,8 @@ def result():
     if score > best_score:
         session['best_score'] = score
         best_score = score
+
+    db.log_result(user_id=1,
+                  score=score, best_score=best_score, answers=user_answers)
 
     return render_template('result.html', score=score, best_score=best_score)
