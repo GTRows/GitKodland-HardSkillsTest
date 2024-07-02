@@ -149,7 +149,7 @@ class Database:
         self.cursor.execute("SELECT MAX(score) FROM results WHERE user_id = ?", (user_id,))
         best_score = self.cursor.fetchone()
         if best_score:
-            return best_score[0]  # best_score[0] olarak döndür
+            return best_score[0]
         else:
             return -1
 
