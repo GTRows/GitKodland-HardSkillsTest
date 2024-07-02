@@ -59,7 +59,8 @@ class Database:
                         CREATE TABLE IF NOT EXISTS users (
                             id INTEGER PRIMARY KEY AUTOINCREMENT,
                             name TEXT,
-                            surname TEXT
+                            surname TEXT,
+                            student_id INTEGER,
                         )
                     """)
         self.conn.commit()

@@ -1,12 +1,14 @@
 from flask import Blueprint, render_template
 from models.question import Question
-from models.database import Database
+from servies.database import Database
+import re
 
 main_bp = Blueprint('main', __name__)
 
 db = Database.get_instance()
 
-@main_bp.route('/')
+
+@main_bp.route('/', methods=['GET', 'POST'])
 def index():
     questions = []
     for row in db.get_questions():

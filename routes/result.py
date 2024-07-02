@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session, flash
 from models.question import Question
-from models.database import Database
+from servies.database import Database
 import re
 result_bp = Blueprint('result', __name__)
 

@@ -1,7 +1,7 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask
 from routes.main import main_bp
 from routes.result import result_bp
-from models.database import Database
+from servies.database import Database
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
