@@ -9,9 +9,8 @@ class BaseObject:
 
     @classmethod
     def from_db(cls, row_dict):
-        # id'yi dict'den çıkarın
         id = row_dict.pop('id', None)
-        return cls(id, **row_dict)
+        return cls(id=id, **row_dict)
 
     def print_all(self):
         attributes = [f"{key}: {value}" for key, value in self.__dict__.items()]
