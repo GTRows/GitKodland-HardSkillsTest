@@ -1,33 +1,88 @@
 [
-    {
-        "question": "What is your favorite color?",
-        "type": "radio",
-        "name": "color",
-        "options": [
-            "red",
-            "blue",
-            "green"
-        ],
-        "answer": "blue",
-        "required": true
-    },
-    {
-        "question": "What is your favorite animal?",
-        "type": "radio",
-        "name": "animal",
-        "options": [
-            "dog",
-            "cat",
-            "parrot"
-        ],
-        "answer": "dog",
-        "required": false
-    },
-    {
-        "question": "Describe your hobbies or interests:",
-        "type": "textarea",
-        "name": "hobbies",
-        "answer": null,
-        "required": true
-    }
+  {
+    "question": "Which Python library is most commonly used for machine learning?",
+    "type": "radio",
+    "name": "machine_learning_library",
+    "options": [
+      "NumPy",
+      "Pandas",
+      "scikit-learn",
+      "Matplotlib"
+    ],
+    "answer": "scikit-learn",
+    "points": 20,
+    "required": true
+  },
+  {
+    "question": "What is the purpose of the 'fit' method in a machine learning model?",
+    "type": "radio",
+    "name": "fit_method",
+    "options": [
+      "To train the model",
+      "To make predictions",
+      "To preprocess data",
+      "To evaluate the model"
+    ],
+    "answer": "To train the model",
+    "points": 20,
+    "required": true
+  },
+  {
+    "question": "Which Python library is primarily used for numerical computations?",
+    "type": "text",
+    "name": "numerical_computations_library",
+    "answer": "NumPy",
+    "points": 10,
+    "required": true
+  },
+  {
+    "question": "Which of the following is a common application of computer vision?",
+    "type": "radio",
+    "name": "computer_vision_application",
+    "options": [
+      "Sentiment analysis",
+      "Image classification",
+      "Text generation",
+      "Speech recognition"
+    ],
+    "answer": "Image classification",
+    "points": 10,
+    "required": true
+  },
+  {
+    "question": "In NLP, what does 'tokenization' refer to?",
+    "type": "radio",
+    "name": "nlp_tokenization",
+    "options": [
+      "Combining words into sentences",
+      "Splitting text into words or phrases",
+      "Converting text to speech",
+      "Detecting sentiment in text"
+    ],
+    "answer": "Splitting text into words or phrases",
+    "points": 20,
+    "required": true
+  },
+  {
+    "question": "Which algorithm is commonly used for classification tasks?",
+    "type": "radio",
+    "name": "classification_algorithm",
+    "options": [
+      "Linear Regression",
+      "K-Means",
+      "Decision Trees",
+      "Principal Component Analysis"
+    ],
+    "answer": "Decision Trees",
+    "points": 20,
+    "required": true
+  },
+  {
+    "question": "Describe a project where you implemented an AI model in a Python application:",
+    "type": "textarea",
+    "name": "ai_model_project",
+    "answer": null,
+    "points": 0,
+    "required": true
+  }
 ]

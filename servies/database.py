@@ -34,6 +34,7 @@ class Database:
                     question TEXT,
                     type TEXT,
                     name TEXT,
+                    points INTEGER,
                     options TEXT,
                     answer TEXT,
                     required BOOLEAN
@@ -83,6 +84,7 @@ class Database:
                 question TEXT,
                 type TEXT,
                 name TEXT,
+                points INTEGER,
                 options TEXT,
                 answer TEXT,
                 required BOOLEAN
@@ -92,9 +94,9 @@ class Database:
         for question in questions_data:
             options_str = ",".join(question.get('options', []))
             cursor.execute("""
-                INSERT INTO questions (question, type, name, options, answer, required)
-                VALUES (?, ?, ?, ?, ?, ?)
-            """, (question['question'], question['type'], question['name'], options_str, question.get('answer'),
+                INSERT INTO questions (question, type, name, points, options, answer, required)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+            """, (question['question'], question['type'], question['name'],question['points'], options_str, question.get('answer'),
                   question['required']))
         conn.commit()
 

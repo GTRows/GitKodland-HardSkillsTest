@@ -2,9 +2,11 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 from models.question import Question
 from servies.database import Database
 import re
+
 result_bp = Blueprint('result', __name__)
 
 db = Database.get_instance()
+
 
 @result_bp.route('/result', methods=['POST'])
 def result():
@@ -15,11 +17,14 @@ def result():
 
     for question in questions:
         user_answer = user_answers.get(question['name'])
+        print(question)
         if question['answer'] is not None:
-            if question['type'] == 'radio' and user_answer == question['answer']:
-                score += 1
+            if question['type'] == 'textarea':
+                continue
+            elif question['type'] == 'radio' and user_answer == question['answer']:
+                score += int(question['points'])
             elif question['type'] == 'text' and user_answer.lower() == question['answer'].lower():
-                score += 1
+                score += int(question['points'])
 
     user_id = session.get('user_id')
     if user_id:
