@@ -44,7 +44,6 @@ class Database:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     user_id INTEGER,
                     score INTEGER,
-                    best_score INTEGER,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
             """)
@@ -103,12 +102,12 @@ class Database:
             questions.append(question_data)
         return questions
 
-    def log_result(self, user_id, score, best_score, answers):
+    def log_result(self, user_id, score, answers):
         if self.cursor is None:
             self.connect()
         self.cursor.execute(
-            "INSERT INTO results (user_id, score, best_score) VALUES (?, ?, ?)",
-            (user_id, score, best_score)
+            "INSERT INTO results (user_id, score) VALUES (?, ?)",
+            (user_id, score)
         )
         self.conn.commit()
 
