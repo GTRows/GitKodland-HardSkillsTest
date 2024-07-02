@@ -25,12 +25,7 @@ def result():
                 score += 1
 
     session['score'] = score
-    best_score = session.get('best_score', 0)
-    if score > best_score:
-        session['best_score'] = score
-        best_score = score
 
-    db.log_result(user_id=1,
-                  score=score, best_score=best_score, answers=user_answers)
+    db.log_result(user_id=1, score=score, answers=user_answers)
 
     return render_template('result.html', score=score, best_score=best_score)

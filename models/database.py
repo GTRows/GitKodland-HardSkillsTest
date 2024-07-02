@@ -44,7 +44,6 @@ class Database:
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     user_id INTEGER,
                     score INTEGER,
-                    best_score INTEGER,
                     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
                 )
             """)
