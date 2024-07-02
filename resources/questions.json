@@ -1,0 +1,40 @@
+[
+    {
+        "question": "What is your name?",
+        "type": "text",
+        "name": "username",
+        "answer": null,
+        "required": true
+    },
+    {
+        "question": "What is your favorite color?",
+        "type": "radio",
+        "name": "question1",
+        "options": [
+            "red",
+            "blue",
+            "green"
+        ],
+        "answer": "blue",
+        "required": true
+    },
+    {
+        "question": "What is your favorite animal?",
+        "type": "radio",
+        "name": "question2",
+        "options": [
+            "dog",
+            "cat",
+            "parrot"
+        ],
+        "answer": "dog",
+        "required": false
+    },
+    {
+        "question": "Describe your hobbies or interests:",
+        "type": "textarea",
+        "name": "question3",
+        "answer": null,
+        "required": true
+    }
+]
