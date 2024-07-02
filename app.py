@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from routes.main import main_bp
 from routes.result import result_bp
 from models.database import Database

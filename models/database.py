@@ -55,6 +55,13 @@ class Database:
                             answer TEXT
                         )
                     """)
+        self.cursor.execute("""
+                        CREATE TABLE IF NOT EXISTS users (
+                            id INTEGER PRIMARY KEY AUTOINCREMENT,
+                            name TEXT,
+                            surname TEXT
+                        )
+                    """)
         self.conn.commit()
         self.load_questions()
 
