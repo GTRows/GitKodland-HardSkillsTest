@@ -9,7 +9,7 @@
 
     {% with messages = get_flashed_messages() %}
         {% if messages %}
-            <div class="error-messages">
+            <div class="error-messages" style="color: red;">
                 {% for message in messages %}
                     <p>{{ message }}</p>
                 {% endfor %}

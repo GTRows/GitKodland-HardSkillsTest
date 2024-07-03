@@ -12,7 +12,7 @@ def index():
     if request.method == 'POST':
         student_id = request.form.get('studentid')
         if student_id and not re.match("^[0-9]{8}$", student_id):
-            flash("Please enter a valid student ID.", 'error')
+            flash("Please enter a valid student ID.\nUser ID must be 8 digits long.", 'error')
             return render_template('index.html')
         if student_id:
             user = db.get_user_by_id(student_id)
@@ -25,13 +25,11 @@ def index():
                 flash("Student not found. Please register.", 'error')
                 return redirect(url_for('main.register'))
         else:
-            if not student_id:
-                flash("Please enter your student ID.", "error")
-            elif not re.match("^[0-9]{8}$", student_id):
-                flash("User ID must be 8 digits long.", "error")
-            return render_template('index.html')
+            flash("User ID must be 8 digits long.", "error")
+        return render_template('index.html')
     else:
         return render_template('index.html')
+
 
 @main_bp.route('/register', methods=['GET', 'POST'])
 def register():
@@ -51,6 +49,7 @@ def register():
             return render_template('register.html', studentid=studentid)
     else:
         return render_template('register.html', studentid=studentid)
+
 
 @main_bp.route('/quiz')
 def quiz():
