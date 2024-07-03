@@ -25,7 +25,10 @@ def index():
                 flash("Student not found. Please register.", 'error')
                 return redirect(url_for('main.register'))
         else:
-            flash("Please enter your student ID.", 'error')
+            if not student_id:
+                flash("Please enter your student ID.", "error")
+            elif not re.match("^[0-9]{8}$", student_id):
+                flash("User ID must be 8 digits long.", "error")
             return render_template('index.html')
     else:
         return render_template('index.html')
