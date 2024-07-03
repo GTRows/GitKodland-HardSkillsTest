@@ -1,6 +1,6 @@
 import sqlite3
 import json
-
+import os
 
 class Database:
     __instance = None
@@ -71,8 +71,9 @@ class Database:
         self.cursor.execute("SELECT COUNT(*) FROM questions")
         if self.cursor.fetchone()[0] > 0:
             return
+        file_path = os.path.join(os.path.dirname(__file__), '..', 'resources', 'questions.json')
 
-        with open('resources/questions.json', 'r') as f:
+        with open(file_path, 'r') as f:
             questions_data = json.load(f)
 
         conn = sqlite3.connect('quiz.db')
